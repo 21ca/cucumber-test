@@ -12,22 +12,23 @@ public class TestSteps {
 	
 	@Before
 	public void init() {
+		score = 0;
 		System.out.println("Init in @Before");
 	}
 	
-	@Given("I got 100") 
+	@Given("^I got score ([^\"]*)$") 
+	public void gotScore(int score) {
+		System.out.println("I got " + score + " in the test.");
+		this.score = score;
+	}
+	
+	@Given("I got full score") 
 	public void got100() {
-		System.out.println("I got 100 in the test.");
+		System.out.println("I got 1000 in the test.");
 		score = 100;
 	}
 	
-	@Given("I got 90") 
-	public void got90() {
-		System.out.println("I got 90 in the test.");
-		score = 90;
-	}
-	
-	@Then("I win") 
+	@Then("^I win$") 
 	public void win() {
 		System.out.println("I win, I win.");
 		Assert.assertEquals(100, score);

@@ -6,7 +6,10 @@ import io.cucumber.junit.CucumberOptions;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "classpath:test.feature", glue="classpath:test")
+@CucumberOptions(
+		features = "classpath:test.feature", 
+		glue="classpath:test", 
+		plugin = "html:reports")
 public class SimpleTest {
 
 }
