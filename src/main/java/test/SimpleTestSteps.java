@@ -4,13 +4,14 @@ import org.junit.Assert;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
-public class TestSteps {
+public class SimpleTestSteps {
 	private int score = 0;
 	
-	@Before
+	@Before("@simpletest")
 	public void init() {
 		score = 0;
 		System.out.println("Init in @Before");
@@ -34,7 +35,22 @@ public class TestSteps {
 		Assert.assertEquals(100, score);
 	}
 	
-	@After
+	@Given("^I got 100 for Math$") 
+	public void math100() {
+		System.out.println("I got 100 for Math");
+	}
+	
+	@And("^I got 100 for English$") 
+	public void english100() {
+		System.out.println("I got 100 for English");
+	}
+	
+	@Then("^I got two 100$") 
+	public void gotTwo100() {
+		System.out.println("I got two 100!");
+	}
+	
+	@After("@simpletest")
 	public void clean() {
 		System.out.println("clean in @After");
 	}
